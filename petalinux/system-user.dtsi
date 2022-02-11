@@ -1,0 +1,307 @@
+/include/ "system-conf.dtsi"
+/ {
+	regulators {
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg_ssd_vqmmc: regulator_ssd_vqmmc {
+			compatible = "regulator-gpio";
+			regulator-name = "ssd_vqmmc";
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <3300000>;
+			regulator-type = "voltage";
+			gpios = <&gpio 43 1>;
+			gpios-states = <1>;
+			states = <3300000 1
+				1800000 0>;
+		};
+	};
+
+	//fmc {
+	//	/* 
+	//	 * By default, FMC Connector power is disabled. 
+	//	 * 1.8V compatibility is checked while booting by reading 
+	//	 * FMC Module's EEPROM to enable correponding FMC connector power.
+	//	 */
+	//	fmc-vadj-millivolt = <1800>;
+	//	fmc-prsnt-m2c = <&gpio3  0 GPIO_ACTIVE_HIGH>;
+	//	fmc-vcc-adj   = <&gpio3  5 GPIO_ACTIVE_HIGH>;
+	//	fmc-vcc-12v   = <&gpio3  3 GPIO_ACTIVE_HIGH>;
+	//	fmc-vcc-3v3   = <&gpio3  4 GPIO_ACTIVE_HIGH>;
+	//	fmc-pg-c2m    = <&gpio3 12 GPIO_ACTIVE_HIGH>;
+	//};
+
+	//fmc_plus {
+	//	/* 
+	//	 * By default, FMC+ Connector power is disabled. 
+	//	 * 1.8V compatibility is checked while booting by reading 
+	//	 * FMC+ Module's EEPROM to enable correponding FMC+ connector power.
+	//	 */
+	//	vadj-millivolt = <1800>;
+	//	prsnt-m2c = <&gpio3  1 GPIO_ACTIVE_HIGH>;
+	//	vcc-adj   = <&gpio3  6 GPIO_ACTIVE_HIGH>;
+	//	vcc-12v   = <&gpio3  8 GPIO_ACTIVE_HIGH>;
+	//	vcc-3v3   = <&gpio3  9 GPIO_ACTIVE_HIGH>;
+	//	pg-c2m    = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+	//};
+
+        retimer_clk: retimer_clk {
+                compatible = "fixed-clock";
+                #clock-cells = <0>;
+                clock-frequency = <148500000>;
+        };
+
+     	cpu_opp_table {
+
+		opp00 {
+			opp-hz = /bits/ 64 <329166666>;
+		};
+		opp01 {
+                        opp-hz = /bits/ 64 <438888888>;
+                };
+		opp02 {
+                        opp-hz = /bits/ 64 <658333333>;
+                };
+		opp03 {
+                        opp-hz = /bits/ 64 <1316666666>;
+                };
+	};
+	amba_pl: amba_pl@0 {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		compatible = "simple-bus";
+		ranges ;
+                //bom_rev {
+                //        pl-aw17 = <&board_config_axi_gpio_4 0 0 0>;
+                //        pl-bb16 = <&board_config_axi_gpio_4 1 0 0>;
+                //        pl-ba16 = <&board_config_axi_gpio_4 2 0 0>;
+                //        pl-ba17 = <&board_config_axi_gpio_4 3 0 0>;
+                //        pl-ay17 = <&board_config_axi_gpio_4 4 0 0>;
+                //};
+	};
+
+  //M_AXI0: memory@a0000000 {
+  //    device_type = "memory";
+  //    reg = < 0x0 0x2000000 >;
+  //};
+};
+
+&can0 {
+	status = "okay";
+	pwdn-gpio = <&gpio 80 0>;
+};
+
+&gem0 {
+	phy-mode = "rgmii-id";
+	local-mac-address = [00 01 02 03 04 05];
+	status = "okay";
+	xlnx,ptp-enet-clock = <0x0>;
+	phy-handle = <&phy0>;
+	phy-reset-gpio = <&gpio 42 1>;
+	phy-reset-active-low;
+	phy-reset-duration = <20>;
+	phy0: phy@1 {
+		reg = <1>;
+		ti,rx-internal-delay = <0x8>;
+		ti,tx-internal-delay = <0xa>;
+		ti,fifo-depth = <0x1>;
+		ti,rxctrl-strap-worka;
+		at803x,led-act-blind-workaround;
+		at803x,eee-disabled;
+		at803x,vddio-1p8v;
+		interrupt-parent = <&gpio>;
+		interrupts = <12 8>;
+	};
+};
+
+&i2c0 {
+	clock-frequency = <400000>;
+	status = "disabled";
+	
+	pmic0: da9062@58 {
+		compatible = "dlg,da9062";
+		reg = <0x58>;
+		interrupt-parent = <&gpio>;
+		interrupts = <2 8>;
+		interrupt-controller;
+		rtc {
+			compatible = "dlg,da9062-rtc";
+		};
+	};
+
+  fusb302: typec-portc@22 {
+		compatible = "fcs,fusb302";
+		reg = <0x22>;
+		fcs,int_n = <&gpio 78 8>;
+		fcs,cc = <&gpio 79 0>;
+		fcs,power_en = <&gpio 25 0>;
+		status = "okay";
+       };
+	/* Programmable clock (for logic) */
+	si5341: clock-generator@76 {
+		reg = <0x76>;
+		compatible = "silabs,si5341";
+		#clock-cells = <2>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		clocks = <&ref48>;
+		clock-names = "xtal";
+		clk0 {
+			reg = <0>;
+			always-on;
+		};
+		clk1 {
+			reg = <1>;
+			always-on;
+		};
+		clk2 {
+			reg = <2>;
+			always-on;
+		};
+		clk3 {
+			reg = <3>;
+			always-on;
+		};
+		clk4 {
+			reg = <4>;
+			always-on;
+		};
+		clk5 {
+			reg = <5>;
+			always-on;
+		};
+		clk6 {
+			reg = <6>;
+			always-on;
+		};
+		clk7 {
+			reg = <7>;
+			always-on;
+		};
+		clk9 {
+			reg = <9>;
+			always-on;
+		};
+	};
+
+		i2c_mux: msd9546@70 {
+		compatible = "pi4,msd9546";
+		reg = <0x70>;
+		status = "okay";
+                #address-cells = <1>;
+                #size-cells = <0>;
+
+                i2c@0 {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        reg = <0>;
+
+                        gpio3: gpio@23 {
+                                compatible = "ti,tca9535";
+                                reg = <0x23>; 
+                                #gpio-cells = <2>;
+                                gpio-controller;
+                        };
+                };
+
+                i2c@1 {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        reg = <1>;
+                };
+
+                i2c@2 {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        reg = <2>;
+
+                        gpio1: gpio@20 {
+		                compatible = "ti,tca6416";
+                                reg = <0x20>; 
+                                #gpio-cells = <2>;
+                                gpio-controller;
+                        };
+
+                        gpio2: gpio@21 {
+               			compatible = "ti,tca6416";
+                                reg = <0x21>; 
+                                #gpio-cells = <2>;
+                                gpio-controller;
+			};
+                };
+
+                i2c@3 {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        reg = <3>;
+                };
+
+       };
+
+};
+
+&usb0 {
+	status = "okay";
+	xlnx,usb-reset = <0x2faf080>;
+};
+
+&sdhci0{
+	bus-width = <8>;
+};
+
+&sdhci1 {
+	clock-frequency = <200000000>;
+	status = "okay";
+	bus-width = <4>;
+	xlnx,mio_bank = <0x1>;
+	xlnx,has-cd = <0x1>;
+	vqmmc-supply = <&reg_ssd_vqmmc>;
+};
+
+&rtc {
+      status = "disabled";
+};
+
+&amba_pl {
+        ref48: ref48M {
+                compatible = "fixed-clock";
+                #clock-cells = <0>;
+                clock-frequency = <48000000>;
+        };
+
+        xlnk {
+                compatible = "xlnx,xlnk-1.0";
+        };
+
+        //vcu_apm: apm@0xa0140000 {
+        //        #address-cells = <0x1>;
+        //        #size-cells = <0x1>;
+        //        compatible = "generic-uio";
+        //        reg = <0x0 0xa0140000 0x0 0x10000>;
+        //        reg-names = "generic";
+        //};
+        casper_io: casper_io@a0000000 {
+                #address-cells = <0x1>;
+                #size-cells = <0x1>;
+                compatible = "generic-uio";
+                reg = <0x0 0xa0000000 0x0 0x2000000>;
+                reg-names = "generic";
+        };
+
+};
+
+&fclk0 {
+       status = "okay";
+};
+
+&fclk1 {
+       status = "okay";
+};
+
+&fclk2 {
+       status = "okay";
+};
+
+&fclk3 {
+       status = "okay";
+};
