@@ -1,3 +1,4 @@
+#include <dt-bindings/gpio/gpio.h>
 /include/ "system-conf.dtsi"
 / {
 	regulators {
@@ -17,33 +18,33 @@
 		};
 	};
 
-	//fmc {
-	//	/* 
-	//	 * By default, FMC Connector power is disabled. 
-	//	 * 1.8V compatibility is checked while booting by reading 
-	//	 * FMC Module's EEPROM to enable correponding FMC connector power.
-	//	 */
-	//	fmc-vadj-millivolt = <1800>;
-	//	fmc-prsnt-m2c = <&gpio3  0 GPIO_ACTIVE_HIGH>;
-	//	fmc-vcc-adj   = <&gpio3  5 GPIO_ACTIVE_HIGH>;
-	//	fmc-vcc-12v   = <&gpio3  3 GPIO_ACTIVE_HIGH>;
-	//	fmc-vcc-3v3   = <&gpio3  4 GPIO_ACTIVE_HIGH>;
-	//	fmc-pg-c2m    = <&gpio3 12 GPIO_ACTIVE_HIGH>;
-	//};
+	fmc {
+		/* 
+		 * By default, FMC Connector power is disabled. 
+		 * 1.8V compatibility is checked while booting by reading 
+		 * FMC Module's EEPROM to enable correponding FMC connector power.
+		 */
+		fmc-vadj-millivolt = <1800>;
+		fmc-prsnt-m2c = <&gpio3  0 GPIO_ACTIVE_HIGH>;
+		fmc-vcc-adj   = <&gpio3  5 GPIO_ACTIVE_HIGH>;
+		fmc-vcc-12v   = <&gpio3  3 GPIO_ACTIVE_HIGH>;
+		fmc-vcc-3v3   = <&gpio3  4 GPIO_ACTIVE_HIGH>;
+		fmc-pg-c2m    = <&gpio3 12 GPIO_ACTIVE_HIGH>;
+	};
 
-	//fmc_plus {
-	//	/* 
-	//	 * By default, FMC+ Connector power is disabled. 
-	//	 * 1.8V compatibility is checked while booting by reading 
-	//	 * FMC+ Module's EEPROM to enable correponding FMC+ connector power.
-	//	 */
-	//	vadj-millivolt = <1800>;
-	//	prsnt-m2c = <&gpio3  1 GPIO_ACTIVE_HIGH>;
-	//	vcc-adj   = <&gpio3  6 GPIO_ACTIVE_HIGH>;
-	//	vcc-12v   = <&gpio3  8 GPIO_ACTIVE_HIGH>;
-	//	vcc-3v3   = <&gpio3  9 GPIO_ACTIVE_HIGH>;
-	//	pg-c2m    = <&gpio3 13 GPIO_ACTIVE_HIGH>;
-	//};
+	fmc_plus {
+		/* 
+		 * By default, FMC+ Connector power is disabled. 
+		 * 1.8V compatibility is checked while booting by reading 
+		 * FMC+ Module's EEPROM to enable correponding FMC+ connector power.
+		 */
+		vadj-millivolt = <1800>;
+		prsnt-m2c = <&gpio3  1 GPIO_ACTIVE_HIGH>;
+		vcc-adj   = <&gpio3  6 GPIO_ACTIVE_HIGH>;
+		vcc-12v   = <&gpio3  8 GPIO_ACTIVE_HIGH>;
+		vcc-3v3   = <&gpio3  9 GPIO_ACTIVE_HIGH>;
+		pg-c2m    = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+	};
 
         retimer_clk: retimer_clk {
                 compatible = "fixed-clock";
@@ -116,7 +117,7 @@
 
 &i2c0 {
 	clock-frequency = <400000>;
-	status = "disabled";
+	status = "okay";
 	
 	pmic0: da9062@58 {
 		compatible = "dlg,da9062";
