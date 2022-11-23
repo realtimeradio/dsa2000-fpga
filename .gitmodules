@@ -1,3 +1,6 @@
 [submodule "mlib_devel"]
 	path = firmware/lib/mlib_devel
 	url = git@github.com:realtimeradio/mlib_devel.git
+[submodule "firmware/lib/rtr_casper_dsp_lib"]
+	path = firmware/lib/rtr_casper_dsp_lib
+	url = git@github.com:realtimeradio/rtr_casper_dsp_lib
