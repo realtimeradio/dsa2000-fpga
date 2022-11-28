@@ -20,7 +20,6 @@ lib:
 	$(MAKE) -C adi_hdl/library/util_adcfifo
 	$(MAKE) -C adi_hdl/library/util_dacfifo
 	$(MAKE) -C adi_hdl/library/util_do_ram
-	$(MAKE) -C adi_hdl/library/util_hbm
 	$(MAKE) -C adi_hdl/library/util_pack/util_cpack2
 	$(MAKE) -C adi_hdl/library/util_pack/util_upack2
 	$(MAKE) -C adi_hdl/library/util_tdd_sync
