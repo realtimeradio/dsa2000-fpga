@@ -4,3 +4,6 @@
 [submodule "firmware/lib/rtr_casper_dsp_lib"]
 	path = firmware/lib/rtr_casper_dsp_lib
 	url = git@github.com:realtimeradio/rtr_casper_dsp_lib
+[submodule "firmware/lib/adi_hdl"]
+	path = firmware/lib/adi_hdl
+	url = https://github.com/analogdevicesinc/hdl
