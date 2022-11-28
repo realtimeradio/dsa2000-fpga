@@ -14,8 +14,6 @@ lib:
 	$(MAKE) -C adi_hdl/library/jesd204/axi_jesd204_tx
 	$(MAKE) -C adi_hdl/library/jesd204/jesd204_rx
 	$(MAKE) -C adi_hdl/library/jesd204/jesd204_tx
-	$(MAKE) -C adi_hdl/library/jesd204/jesd204_versal_gt_adapter_rx
-	$(MAKE) -C adi_hdl/library/jesd204/jesd204_versal_gt_adapter_tx
 	$(MAKE) -C adi_hdl/library/sysid_rom
 	$(MAKE) -C adi_hdl/library/util_adcfifo
 	$(MAKE) -C adi_hdl/library/util_dacfifo
