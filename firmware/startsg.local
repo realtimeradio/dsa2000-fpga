@@ -1,5 +1,5 @@
-export XILINX_PATH=/data/Xilinx/Vivado/2021.1
-export COMPOSER_PATH=/data/Xilinx/Model_Composer/2021.1
+export XILINX_PATH=/data/Xilinx/Vivado/2021.2
+export COMPOSER_PATH=/data/Xilinx/Model_Composer/2021.2
 export MATLAB_PATH=/data/MATLAB/R2021a
 export PLATFORM=lin64
 export JASPER_BACKEND=vivado
