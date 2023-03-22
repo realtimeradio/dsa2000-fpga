@@ -13,7 +13,7 @@ entity fft_2p_4kc_18i_18o_core_ip_struct is
     ce_1 : in std_logic;
     pol_out0 : out std_logic_vector( 576-1 downto 0 );
     pol_out1 : out std_logic_vector( 576-1 downto 0 );
-    overflow : out std_logic_vector( 1-1 downto 0 ),
+    overflow : out std_logic_vector( 1-1 downto 0 );
     sync_out : out std_logic_vector( 1-1 downto 0 )
   );
 end fft_2p_4kc_18i_18o_core_ip_struct;
