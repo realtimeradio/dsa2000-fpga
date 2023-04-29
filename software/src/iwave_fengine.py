@@ -55,10 +55,10 @@ class IwaveFengine():
                         host=self.hostname,
                         transport=casperfpga.KatcpTransport,
                     )
-        try:
-            self._cfpga.get_system_information()
-        except:
-            self.logger.error("Failed to read and decode .fpg header from flash")
+        #try:
+        #    self._cfpga.get_system_information()
+        #except:
+        #    self.logger.error("Failed to read and decode .fpg header from flash")
         self.blocks = {}
         try:
             self._initialize_blocks()
