@@ -2,6 +2,7 @@ from distutils.core import setup
 import glob
 import os
 
+
 try:
     import subprocess
     git_desc = subprocess.check_output(['git', 'describe', '--abbrev=8', '--always', '--dirty', '--tags']).decode().strip()

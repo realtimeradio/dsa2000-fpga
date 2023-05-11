@@ -1,7 +1,7 @@
 import logging
 from termcolor import colored
-from lwa_f import helpers
-from lwa_f import error_levels as el
+from dsa2k_f import helpers
+from dsa2k_f import error_levels as el
 
 class Block(object):
     """

@@ -1,7 +1,7 @@
 import time
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 
 class Eth(Block):
     """

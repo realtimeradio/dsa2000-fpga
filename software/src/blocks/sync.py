@@ -2,7 +2,7 @@ import time
 from numpy import log2
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 
 class Sync(Block):
     OFFSET_ACTIVE_HIGH = 0

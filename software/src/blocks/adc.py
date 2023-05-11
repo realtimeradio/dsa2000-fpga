@@ -6,8 +6,8 @@ import time
 import progressbar
 import casperfpga
 from casperfpga import ads5296
-from lwa_f import helpers
-from lwa_f.error_levels import *
+from dsa2k_f import helpers
+from dsa2k_f.error_levels import *
 from .block import Block
 
 TAP_STEP_SIZE = 8
