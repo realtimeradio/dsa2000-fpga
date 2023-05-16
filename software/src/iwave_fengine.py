@@ -100,7 +100,12 @@ class IwaveFengine():
         ##: Control interface to Mask (flagging) block
         #self.mask        = mask.Mask(self._cfpga, 'mask')
         #: Control interface to Autocorrelation block
-        self.autocorr    = autocorr.AutoCorr(self._cfpga, 'autocorr')
+        self.autocorr    = autocorr.AutoCorr(self._cfpga, 'autocorr',
+                                             n_signals=2,
+                                             n_parallel_streams=8,
+                                             n_cores=2,
+                                             use_mux=False,
+                                             )
         ##: Control interface to Equalization block
         #self.eq          = eq.Eq(self._cfpga, 'eq', n_streams=64, n_coeffs=2**9)
         #: Control interface to post-equalization Test Vector Generator block
