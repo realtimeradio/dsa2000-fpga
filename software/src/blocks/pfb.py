@@ -1,7 +1,7 @@
 import numpy as np
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 
 class Pfb(Block):
     _N_CORES = 4 #: Number of FFT sub-cores per PFB block

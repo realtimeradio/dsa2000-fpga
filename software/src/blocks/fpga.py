@@ -3,9 +3,9 @@ import time
 import datetime
 
 from .block import Block
-from lwa_f.error_levels import *
-from lwa_f import __version__
-from lwa_f import __fwversion__
+from dsa2k_f.error_levels import *
+from dsa2k_f import __version__
+from dsa2k_f import __fwversion__
 
 import casperfpga.sysmon
 

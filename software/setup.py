@@ -6,7 +6,7 @@ try:
     import subprocess
     git_desc = subprocess.check_output(['git', 'describe', '--abbrev=8', '--always', '--dirty', '--tags']).decode().strip()
     print('Git describe returns: %s' % git_desc)
-    if git_desc.endswith('dirty'):
+    if git_desc.endswith('dirty') or 'FORCE' in os.environ.keys():
         ver = git_desc # For local testing only
     else:
         assert git_desc.startswith('v'), 'Repo should be tagged with a version vX.Y.Z'

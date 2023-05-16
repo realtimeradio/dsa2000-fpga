@@ -2,7 +2,7 @@ import socket
 import datetime
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 from casperfpga import i2c, i2c_volt, i2c_mux
 
 class PowerMon(Block):

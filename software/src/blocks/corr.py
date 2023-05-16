@@ -3,7 +3,7 @@ import struct
 import numpy as np
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 
 class Corr(Block):
     """

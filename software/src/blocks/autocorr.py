@@ -4,7 +4,7 @@ import numpy as np
 from scipy.signal import medfilt
 
 from .block import Block
-from lwa_f.error_levels import *
+from dsa2k_f.error_levels import *
 
 class AutoCorr(Block):
     """
