@@ -14,7 +14,14 @@ A repository for DSA2000 F-engine FPGA firmware and control software.
 git submodule update --init --recursive
 ```
 3. Create a local environment specification file `firmware/startsg.local`.
-4. From `firmware/`, run `startsg` (if your environment file is called `startsg.local`) or `startsg <my_local_environment_file.local>`.
+4. Prior to compiling firmware, make ADI IP
+```
+cd firmware
+source startsg
+cd lib/adi_hdl/library
+make all # Then get a coffee
+```
+5. From `firmware/`, run `startsg` (if your environment file is called `startsg.local`) or `startsg <my_local_environment_file.local>`.
 
 ## Repository Layout
 
