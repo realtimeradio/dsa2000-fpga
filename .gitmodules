@@ -7,3 +7,6 @@
 [submodule "firmware/lib/adi_hdl"]
 	path = firmware/lib/adi_hdl
 	url = https://github.com/analogdevicesinc/hdl
+[submodule "petalinux_adi/meta-adi"]
+	path = petalinux_adi/meta-adi
+	url = https://github.com/analogdevicesinc/meta-adi.git
