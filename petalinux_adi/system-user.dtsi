@@ -195,7 +195,8 @@
 			clock-output-names = "rx_gt_clk", "rx_out_clk";
 
 			adi,sys-clk-select = <XCVR_QPLL1>;
-			adi,out-clk-select = <XCVR_REFCLK>;
+			//adi,out-clk-select = <XCVR_REFCLK>;
+			adi,out-clk-select = <XCVR_PROGDIV_CLK>;
  			adi,use-lpm-enable;
 
 			jesd204-device;
@@ -216,7 +217,8 @@
 			clock-output-names = "tx_gt_clk", "tx_out_clk";
 
 			adi,sys-clk-select = <XCVR_QPLL1>;
-			adi,out-clk-select = <XCVR_REFCLK>;
+			//adi,out-clk-select = <XCVR_REFCLK>;
+			adi,out-clk-select = <XCVR_PROGDIV_CLK>;
 
 			jesd204-device;
 			#jesd204-cells = <2>;
@@ -510,10 +512,9 @@
 
 		adi,pll1-loop-bandwidth-hz = <200>;
 
-		adi,pll2-output-frequency = <2250000000>;
+		adi,pll2-output-frequency = <3000000000>;
 
-		//adi,sysref-timer-divider = <625>;
-		adi,sysref-timer-divider = <1024>;
+		adi,sysref-timer-divider = <2048>;
 		adi,pulse-generator-mode = <0>;
 
 		adi,clkin0-buffer-mode  = <0x07>;
@@ -533,21 +534,20 @@
 		hmc7044_c0: channel@0 { // unused
 			reg = <0>;
 			adi,extended-name = "CORE_CLK_RX";
-			adi,divider = <4>;
+			adi,divider = <32>; // 93.75 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
-      adi,disable;
+			adi,disable;
 		};
 		hmc7044_c2: channel@2 {
 			reg = <2>;
 			adi,extended-name = "DEV_REFCLK";
-			adi,divider = <8>; // 500 // 562.5 MHz
+			adi,divider = <10>; // 300 MHz (Fs/15)
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 		};
 		hmc7044_c3: channel@3 {
 			reg = <3>;
 			adi,extended-name = "DEV_SYSREF";
-			//adi,divider = <1024>; // 1.95 // 1.09... MHz
-			adi,divider = <1024>; // 1.95 // 1.09... MHz
+			adi,divider = <2048>; // 1.46484375 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 			adi,jesd204-sysref-chan;
 		};
@@ -555,37 +555,34 @@
 		hmc7044_c6: channel@6 {
 			reg = <6>;
 			adi,extended-name = "CORE_CLK_TX";
-			//adi,divider = <8>; // 250
-			adi,divider = <8>; // 250
+			adi,divider = <32>; // 93.75 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 		};
 
 		hmc7044_c8: channel@8 { // UNUSED
 			reg = <8>;
 			adi,extended-name = "FPGA_REFCLK1";
-			adi,divider = <8>; // 500
+			adi,divider = <32>; // 93.75 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
-      adi,disable;
+			adi,disable;
 		};
 		hmc7044_c10: channel@a {
 			reg = <10>;
 			adi,extended-name = "CORE_CLK_RX_ALT";
-			//adi,divider = <8>; //250
-			adi,divider = <8>; //250
+			adi,divider = <32>; // 93.75 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 		};
 
 		hmc7044_c12: channel@c {
 			reg = <12>;
 			adi,extended-name = "FPGA_REFCLK2";
-			adi,divider = <8>; // 250
+			adi,divider = <32>; // 93.75 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 		};
 		hmc7044_c13: channel@d {
 			reg = <13>;
 			adi,extended-name = "FPGA_SYSREF";
-			//adi,divider = <1024>; // 1.95
-			adi,divider = <1024>; // 1.95
+			adi,divider = <2048>; // 1.46484375 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 			adi,jesd204-sysref-chan;
 		};
