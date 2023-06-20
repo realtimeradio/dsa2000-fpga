@@ -622,7 +622,7 @@
 			<&axi_ad9081_core_rx 0 FRAMER_LINK0_RX>,
 			<&axi_ad9081_core_tx 0 DEFRAMER_LINK0_TX>;
 
-    adi,continuous-sysref-mode-disable;
+		adi,continuous-sysref-mode-disable;
 
 		adi,tx-dacs {
 			#size-cells = <0>;
@@ -645,7 +645,7 @@
 				ad9081_dac1: dac@1 {
 					reg = <1>;
 					adi,crossbar-select = <&ad9081_tx_fddc_chan1>;
-          adi,maindp-dac-1x-non1x-crossbar-select = <1>; /* Required to map correct datapath !*/
+					adi,maindp-dac-1x-non1x-crossbar-select = <1>; /* Required to map correct datapath !*/
 					adi,nco-frequency-shift-hz = /bits/ 64 <0>; /* 0 MHz */
 				};
 			};
