@@ -2,6 +2,7 @@
 package alpaca_ospfb_hann_2048_8_coeff_pkg;
   import alpaca_constants_pkg::*;
 
+  // [NBITS-1:0] [NSAMPLES_PER_CLOCK-1:0] TAPS [NTAPS*NFFT/NSAMPLES_PER_CLOCK-1:0]
   parameter logic [15:0][15:0] TAPS [1024] = {
 	
 	{16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000,16'h0000},
