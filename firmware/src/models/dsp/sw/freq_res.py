@@ -38,7 +38,7 @@ zoom_a_res_kps = 2
 zoom_b_res_kps = 0.3
 zoom_a_res_khz = kps_to_khz(zoom_a_res_kps, fh1_mhz/1.02) # to 100Mpc -> 7000 km/s -> 0.02c
 zoom_b_res_khz = kps_to_khz(zoom_b_res_kps, fh1_mhz) # z=0
-print('Zoom A: %.2f km/s (at %.1f MHz) -> %.1f kHz' % (zoom_a_res_kps, fh1_mhz, zoom_a_res_khz))
+print('Zoom A: %.2f km/s (at %.1f MHz) -> %.1f kHz' % (zoom_a_res_kps, fh1_mhz/1.02, zoom_a_res_khz))
 print('Zoom B: %.2f km/s (at %.1f MHz) -> %.1f kHz' % (zoom_b_res_kps, fh1_mhz, zoom_b_res_khz))
 
 plt.show()
