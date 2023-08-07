@@ -28,7 +28,7 @@ ln -s ../../../../../../../../../../../system-top.dts ./build/tmp/work-shared/zy
 ```
 12. Include custom device tree:
 ```
-ln -s ../../../../../../system-user.dtsi project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi`
+ln -s ../../../../../../system-user.dtsi project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 ```
 13. Build!
 ```
