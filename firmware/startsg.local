@@ -7,6 +7,7 @@ export CASPER_SKIP_STARTUP_LOAD_SYSTEM=yesplease
 export CASPER_PYTHON_VENV_ON_START=/home/jackh/casper-python3.8-venv
 export XILINXD_LICENSE_FILE=/home/jackh/.Xilinx/Xilinx.lic
 export OSPFB_REPO_PATH=/home/jackh/src/dsa2000-fpga/firmware/lib/oversampled-pfb
+export USE_DUMB_BRAMS=yes
 
 # over-ride the MATLAB libexpat version with the OS's one.
 # Using LD_PRELOAD=${LD_PRELOAD}:"..." rather than just LD_PRELOAD="..."
