@@ -30,6 +30,13 @@ ln -s ../../../../../../../../../../../system-top.dts ./build/tmp/work-shared/zy
 ```
 ln -s ../../../../../../system-user.dtsi project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 ```
+13. Set U-boot environment variables to live on SD card
+```
+petalinux-config -c u-boot
+Environment --> Environment in an MMC device
+Environment --> Device and partition for where to store the environment in FAT --> 1:auto
+Environment --> mmc device number --> 1
+```
 13. Build!
 ```
 petalinux-build
@@ -44,5 +51,7 @@ petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga images/linux
 images/linux/BOOT.BIN
 images/linux/boot.scr
 images/linux/image.ub
+uboot.env
+top.bit # will be programmed by linux (useful if you want to omit --fpga in the packaging step above)
 ```
 
