@@ -512,7 +512,7 @@
 
 		adi,pll1-loop-bandwidth-hz = <200>;
 
-		adi,pll2-output-frequency = <2400000000>;
+		adi,pll2-output-frequency = <3000000000>;
 
 		adi,sysref-timer-divider = <2048>;
 		adi,pulse-generator-mode = <0>;
@@ -576,7 +576,7 @@
 		hmc7044_c12: channel@c {
 			reg = <12>;
 			adi,extended-name = "FPGA_REFCLK2";
-			adi,divider = <8>; // 300 MHz
+			adi,divider = <16>; // 150 MHz
 			adi,driver-mode = <HMC7044_DRIVER_MODE_LVDS>;
 		};
 		hmc7044_c13: channel@d {
@@ -625,14 +625,14 @@
 			#size-cells = <0>;
 			#address-cells = <1>;
 
-			adi,dac-frequency-hz = /bits/ 64 <4800000000>;
+			adi,dac-frequency-hz = /bits/ 64 <6000000000>;
 			//adi,dac-frequency-hz = /bits/ 64 <4000000000>;
 
 			adi,main-data-paths {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
-				adi,interpolation = <1>;
+				adi,interpolation = <2>;
 
 				ad9081_dac0: dac@0 {
 					reg = <0>;
@@ -701,7 +701,7 @@
 			#size-cells = <0>;
 			#address-cells = <1>;
 
-			adi,adc-frequency-hz = /bits/ 64 <4800000000>;
+			adi,adc-frequency-hz = /bits/ 64 <6000000000>;
 			//adi,adc-frequency-hz = /bits/ 64 <4000000000>;
 
 			adi,main-data-paths {
@@ -710,13 +710,13 @@
 
 				ad9081_adc0: adc@0 {
 					reg = <0>;
-					adi,decimation = <1>;
-					adi,nco-frequency-shift-hz =  /bits/ 64 <0>;
+					adi,decimation = <4>;
+					adi,nco-frequency-shift-hz =  /bits/ 64 <1000000000>;
 				};
 				ad9081_adc1: adc@1 {
 					reg = <1>;
-					adi,decimation = <1>;
-					adi,nco-frequency-shift-hz =  /bits/ 64 <0>;
+					adi,decimation = <4>;
+					adi,nco-frequency-shift-hz =  /bits/ 64 <(-1000000000)>;
 				};
 
 			};
@@ -751,17 +751,17 @@
 				ad9081_rx_jesd_l0: link@0 {
 					reg = <0>;
 					adi,converter-select =
-						 <&ad9081_rx_fddc_chan0 FDDC_I>, <&ad9081_rx_fddc_chan1 FDDC_I>;
-						 //<&ad9081_rx_fddc_chan1 FDDC_I>, <&ad9081_rx_fddc_chan1 FDDC_Q>;
+						 <&ad9081_rx_fddc_chan0 FDDC_I>, <&ad9081_rx_fddc_chan0 FDDC_Q>,
+						 <&ad9081_rx_fddc_chan1 FDDC_I>, <&ad9081_rx_fddc_chan1 FDDC_Q>;
 
                                         adi,logical-lane-mapping = /bits/ 8 <2 0 7 6 5 4 3 1>;
 
-					adi,link-mode = <19>;			/* JESD Quick Configuration Mode */
+					adi,link-mode = <18>;			/* JESD Quick Configuration Mode */
 					adi,subclass = <1>;			/* JESD SUBCLASS 0,1,2 */
 					adi,version = <2>;			/* JESD VERSION 0=204A,1=204B,2=204C */
 					adi,dual-link = <0>;			/* JESD Dual Link Mode */
 
-					adi,converters-per-device = <2>;	/* JESD M */
+					adi,converters-per-device = <4>;	/* JESD M */
 					adi,octets-per-frame = <1>;		/* JESD F */
 
 					adi,frames-per-multiframe = <256>;	/* JESD K */
@@ -769,7 +769,7 @@
 					adi,bits-per-sample = <16>;		/* JESD NP' */
 					adi,control-bits-per-sample = <0>;	/* JESD CS */
 					adi,lanes-per-device = <8>;		/* JESD L */
-					adi,samples-per-converter-per-frame = <2>; /* JESD S */
+					adi,samples-per-converter-per-frame = <1>; /* JESD S */
 					adi,high-density = <1>;			/* JESD HD */
 				};
 			};
