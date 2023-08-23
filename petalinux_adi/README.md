@@ -44,6 +44,7 @@ petalinux-build
 14. Package:
 ```
 # Use another FPGA image if you want, but be sure it is compatible with the .XSA used for this project!
+# Omit the --fpga flag and bitfile path if you wish to provide firmware by placing top.bit/top.bin in the boot directory.
 petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga images/linux/system.bit --u-boot --force
 ```
 15. Copy the following to the boot partition of an SD card:
