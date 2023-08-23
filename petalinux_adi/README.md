@@ -52,6 +52,7 @@ images/linux/BOOT.BIN
 images/linux/boot.scr
 images/linux/image.ub
 uboot.env
-top.bit # will be programmed by linux (useful if you want to omit --fpga in the packaging step above)
+top.bin # will be programmed by uboot (useful if you want to omit --fpga in the packaging step above)
+top.bit # will be programmed by uboot if top.bin doesn't exist
 ```
 
