@@ -13,3 +13,6 @@
 [submodule "firmware/lib/oversampled-pfb"]
 	path = firmware/lib/oversampled-pfb
 	url = https://github.com/realtimeradio/oversampled-pfb
+[submodule "software/lib/casperfpga"]
+	path = software/lib/casperfpga
+	url = https://github.com/realtimeradio/casperfpga
