@@ -57,3 +57,19 @@ top.bin # will be programmed by uboot (useful if you want to omit --fpga in the 
 top.bit # will be programmed by uboot if top.bin doesn't exist
 ```
 
+# Updating Uboot Environment
+
+1. Install uboot tools
+```
+sudo apt install u-boot-tools
+```
+
+2. Modify uboot environment `uboot.env.txt`
+
+3. Build binary environment file
+```
+mkenvimage -s 262144 -o uboot.env uboot.env.txt
+```
+
+4. Copy resultant `uboot.env` to `/boot` on the SoC OS
+
