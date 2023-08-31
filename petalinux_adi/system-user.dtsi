@@ -104,7 +104,7 @@
 
 		rx_dma: dma@9c420000 {
 			compatible = "adi,axi-dmac-1.00.a";
-			reg = <0x9c420000 0x1000>;
+			reg = <0x9c420000 0x0400>;
 			#dma-cells = <1>;
 			#clock-cells = <0>;
 			interrupts = <0 109 IRQ_TYPE_LEVEL_HIGH>;
@@ -113,7 +113,7 @@
 
 		tx_dma: dma@9c430000  {
 			compatible = "adi,axi-dmac-1.00.a";
-			reg = <0x9c430000 0x1000>;
+			reg = <0x9c430000 0x0400>;
 			#dma-cells = <1>;
 			#clock-cells = <0>;
 			interrupts = <0 108 IRQ_TYPE_LEVEL_HIGH>;
@@ -242,7 +242,7 @@
 
 		axi_data_offload_rx: axi-data-offload-1@9c450000 {
 			compatible = "adi,axi-data-offload-1.0.a";
-			reg = <0x9c450000 0x10000>;
+			reg = <0x9c450000 0x4000>;
 		};
 	};
 
