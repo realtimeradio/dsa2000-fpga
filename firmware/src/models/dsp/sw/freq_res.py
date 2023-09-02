@@ -10,6 +10,15 @@ def khz_to_kps(res_khz, fobs_mhz):
 
 fh1_mhz = 1420
 fobs_mhz = np.arange(700, 2000)
+print(fobs_mhz)
+fobs_bw = fobs_mhz[-1] - fobs_mhz[0]
+print(fobs_bw)
+fnyq_bw = 1600.
+guard_bw = fnyq_bw - fobs_bw
+print(guard_bw)
+fnyq_mhz = fobs_mhz - guard_bw/2.
+print(fnyq_mhz)
+print(fnyq_bw)
 
 res_trials_kps = [30, 40, 50, 60]
 
@@ -21,13 +30,16 @@ plt.legend()
 #plt.xlabel('Observing Frequency [MHz]')
 plt.ylabel('Frequency Resolution [kHz]')
 
-res_trials_khz = [73.5, 2*73.5, 98, 2*98, 84, 2*84, 134]
+res_trials_khz = [73.5, 2*73.5, 4*73.4, 98, 2*98, 84, 2*84, 134]
 plt.subplot(2,1,2)
 for res_khz in res_trials_khz:
     dv_kps = khz_to_kps(res_khz, fobs_mhz)
     plt.plot(fobs_mhz, dv_kps, label='%d kHz' % res_khz)
 for res_kps in res_trials_kps:
     plt.axhline(res_kps, color='k')
+for i in range(8):
+    plt.axvline(fobs_mhz[0] + i*fobs_bw/8., color='k', linestyle='dotted')
+    plt.axvline(fobs_mhz[0] + i*fnyq_bw/8., color='r', linestyle='dotted')
 plt.legend()
 plt.ylabel('Velocity Resolution [km/s]')
 
