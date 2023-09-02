@@ -11,7 +11,7 @@ def khz_to_kps(res_khz, fobs_mhz):
 fh1_mhz = 1420
 fobs_mhz = np.arange(700, 2000)
 
-res_trials_kps = [30, 40, 60, 80]
+res_trials_kps = [30, 40, 50, 60]
 
 plt.subplot(2,1,1)
 for res_kps in res_trials_kps:
@@ -21,7 +21,7 @@ plt.legend()
 #plt.xlabel('Observing Frequency [MHz]')
 plt.ylabel('Frequency Resolution [kHz]')
 
-res_trials_khz = [98, 2*98, 134]
+res_trials_khz = [73.5, 2*73.5, 98, 2*98, 84, 2*84, 134]
 plt.subplot(2,1,2)
 for res_khz in res_trials_khz:
     dv_kps = khz_to_kps(res_khz, fobs_mhz)
