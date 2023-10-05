@@ -58,7 +58,7 @@ plt.plot(x+4, resp_db, colors[4])
 plt.xlim(0, 4)
 plt.ylim(YMIN, YMAX)
 plt.xlabel('Normalized Frequency')
-plt.ylabel('Attenuation [dB]')
+plt.ylabel('Response [dB]')
 
 #plt.hlines(-6, 0, NFFT, colors='k', linestyles='solid')
 for i in range(5):
@@ -80,7 +80,7 @@ plt.plot(x+2., resp_db, colors[2])
 plt.xlim(0, 2)
 plt.ylim(-0.1, 0.1)
 plt.xlabel('Normalized Frequency')
-plt.ylabel('Attenuation [dB]')
+plt.ylabel('Response [dB]')
 
 for i in range(4):
     #plt.vlines(NFFT/2 + i/float(os_ratio), YMIN, YMAX, colors='k')
