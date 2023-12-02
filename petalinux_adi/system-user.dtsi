@@ -508,7 +508,7 @@
 		//adi,pll1-clkin-frequencies = <122880000 30720000 0 0>;
 		//adi,vcxo-frequency = <122880000>;
 
-		adi,pll1-clkin-frequencies = <100000000 10000000 0 0>;
+		adi,pll1-clkin-frequencies = <100000000 100000000 0 0>;
 		adi,vcxo-frequency = <100000000>;
 
 		adi,pll1-loop-bandwidth-hz = <200>;
