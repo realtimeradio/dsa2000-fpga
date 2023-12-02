@@ -494,6 +494,7 @@
 		jesd204-sysref-provider;
 
 		adi,jesd204-max-sysref-frequency-hz = <2000000>; /* 2 MHz */
+		adi,pll1-ref-prio-ctrl = <0x1>; /* Use CLK1 if available, else CLK0 (see HMC7044 reg 0x14) */
 
 		/*
 		* There are different versions of the AD9081-FMCA-EBZ & AD9082-FMCA-EBZ
