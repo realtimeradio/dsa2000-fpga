@@ -9,7 +9,7 @@
 	url = https://github.com/analogdevicesinc/hdl
 [submodule "petalinux_adi/meta-adi"]
 	path = petalinux_adi/meta-adi
-	url = https://github.com/analogdevicesinc/meta-adi.git
+	url = https://gitlab.com/dsa-2000/rcf/fsm/software/libs/meta-adi
 [submodule "firmware/lib/oversampled-pfb"]
 	path = firmware/lib/oversampled-pfb
 	url = https://github.com/realtimeradio/oversampled-pfb
